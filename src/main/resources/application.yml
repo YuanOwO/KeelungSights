@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: keelungsightsviewer
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    path: /openapi.json
+  swagger-ui:
+    path: /docs
+    disable-swagger-default-url: false
+  default-produces-media-type: application/json
