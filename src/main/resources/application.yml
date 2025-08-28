@@ -1,6 +1,11 @@
 spring:
   application:
     name: keelungsightsviewer
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
 
 server:
   port: 8080
@@ -11,4 +16,5 @@ springdoc:
   swagger-ui:
     path: /docs
     disable-swagger-default-url: false
+    tagsSorter: alpha
   default-produces-media-type: application/json
