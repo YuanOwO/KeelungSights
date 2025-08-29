@@ -18,14 +18,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY) // HTTP 422
     public ErrorMessage handleValidationException(MethodArgumentNotValidException ex) {
-        return new ErrorMessage("422", ex.getMessage());
+        return new ErrorMessage(422, "Unprocessable Entity", ex.getMessage());
     }
 
     // 處理 @Validated 驗證失敗（RequestParam, PathVariable）
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY) // 422
     public ErrorMessage handleConstraintViolation(ConstraintViolationException ex) {
-        return new ErrorMessage("422", ex.getMessage());
+        return new ErrorMessage(422, "Unprocessable Entity", ex.getMessage());
     }
 
     // 處理參數型別不匹配錯誤
@@ -37,14 +37,21 @@ public class GlobalExceptionHandler {
         String requiredType = ex.getRequiredType() != null ? ex.getRequiredType().getSimpleName() : "未知型別";
         String msg = String.format("%s 應為 %s 型別，但收到的值為 '%s'", paramName, requiredType, paramValue);
 
-        return new ErrorMessage("422", msg);
+        return new ErrorMessage(422, "Unprocessable Entity", msg);
     }
 
     // 處理未知的路徑請求
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND) // 404
     public ErrorMessage handleNoHandlerFound(NoHandlerFoundException ex) {
-        return new ErrorMessage("404", "Unknown path: " + ex.getRequestURL());
+        return new ErrorMessage(404, "Not Found", "Unknown path: " + ex.getRequestURL());
+    }
+
+    // 處理自訂的 NotFoundException
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND) // 404
+    public ErrorMessage handleNotFoundException(NotFoundException ex) {
+        return new ErrorMessage(404, "Not Found", ex.getMessage());
     }
 
 }

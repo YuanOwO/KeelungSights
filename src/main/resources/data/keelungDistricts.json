@@ -1,0 +1,37 @@
+[
+  {
+    "zipcode": "200",
+    "zh": "仁愛區",
+    "en": "Renai"
+  },
+  {
+    "zipcode": "201",
+    "zh": "信義區",
+    "en": "Xinyi"
+  },
+  {
+    "zipcode": "202",
+    "zh": "中正區",
+    "en": "Zhongzheng"
+  },
+  {
+    "zipcode": "203",
+    "zh": "中山區",
+    "en": "Zhongshan"
+  },
+  {
+    "zipcode": "204",
+    "zh": "安樂區",
+    "en": "Anle"
+  },
+  {
+    "zipcode": "205",
+    "zh": "暖暖區",
+    "en": "Nuannuan"
+  },
+  {
+    "zipcode": "206",
+    "zh": "七堵區",
+    "en": "Qidu"
+  }
+]

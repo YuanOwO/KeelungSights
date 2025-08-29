@@ -1,15 +1,17 @@
 package xyz.yuanowo.keelungsightsviewer.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 
 @Data
+@Schema(description = "景點資料")
 public class Sight implements Serializable {
+
+    @Schema(description = "景點 ID", example = "1")
+    private Long id;
 
     @Schema(description = "景點名稱", example = "摩艾DUMDUM")
     private String name;
@@ -33,7 +35,10 @@ public class Sight implements Serializable {
     @Schema(description = "地圖連結", example = "https://maps.app.goo.gl/MXQsFcCQkUYHhUk87")
     private String mapURL;
 
-    @Schema(description = "景點照片")
+    @Schema(description = "景點照片", example = "https://lh3.googleusercontent" +
+            ".com/geougc-cs/AB3l90B5FADQ9qRvuKIdl5TOraPfSEV1ym_mZh7_2Vqusq_" +
+            "-Gjfp7TcZgpzkESN9RSFxJaiYx3xH3YicIdAfqkPhyKZRA0dGoN6qD3mZmIVjyDZWQsT180qcaE7qGIMzbLKKz7IfmIAQ=w2048" +
+            "-h1536-p")
     private String photoURL;
 
     @Schema(description = "來源網址", example = "https://www.example.com/dumdum")

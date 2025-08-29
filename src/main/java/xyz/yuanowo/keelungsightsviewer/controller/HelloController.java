@@ -1,18 +1,19 @@
 package xyz.yuanowo.keelungsightsviewer.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.yuanowo.keelungsightsviewer.model.ErrorMessage;
 import xyz.yuanowo.keelungsightsviewer.model.Message;
+import xyz.yuanowo.keelungsightsviewer.service.HelloService;
 
 
 @Tag(name = "Hello")
@@ -20,25 +21,31 @@ import xyz.yuanowo.keelungsightsviewer.model.Message;
 @Validated
 public class HelloController {
 
+    private final HelloService helloService;
+
+    public HelloController(HelloService helloService) {
+        this.helloService = helloService;
+    }
+
     @Operation(summary = "Hello World", description = "回傳 Hello!")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "我還活著!",
-                            content = @Content(schema = @Schema(implementation = Message.class))
-                    ),
-                    @ApiResponse(responseCode = "422", description = "參數驗證失敗")
-            }
+    @ApiResponse(
+            responseCode = "200",
+            description = "OK",
+            content = @Content(schema = @Schema(implementation = Message.class))
+    )
+    @ApiResponse(
+            responseCode = "418",
+            description = "I'm a teapot",
+            content = @Content(schema = @Schema(implementation = ErrorMessage.class))
     )
     @GetMapping("/")
     public Message hello(
-            @Parameter(description = "你的名字")
-            @Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "只能由英文字母、數字和底線組成")
-            @RequestParam(defaultValue = "World")
+            @Schema(description = "你的名字", pattern = "^[a-zA-Z0-9_]+$", example = "Alice", defaultValue = "World")
+            @Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "name 只能由英文字母、數字和底線組成")
+            @RequestParam(name = "name", defaultValue = "World")
             String name
     ) {
-        return new Message(String.format("Hello %s!", name));
+        return helloService.getGreeting(name);
     }
 
 }
