@@ -1,47 +1,42 @@
-package xyz.yuanowo.keelungsightsviewer.model;
+package xyz.yuanowo.keelungsightsviewer.model
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import io.swagger.v3.oas.annotations.media.Schema
+import java.io.Serializable
 
-import java.io.Serializable;
-
-
-@Data
 @Schema(description = "景點資料")
-public class Sight implements Serializable {
+data class Sight(
+    @field:Schema(description = "景點ID", example = "9527")
+    var id: Int? = null,
 
-    @Schema(description = "景點 ID", example = "1")
-    private Long id;
+    @field:Schema(description = "景點名稱", example = "摩艾DUMDUM")
+    var name: String? = null,
 
-    @Schema(description = "景點名稱", example = "摩艾DUMDUM")
-    private String name;
+    @field:Schema(description = "所在縣市", example = "基隆市")
+    var city: String? = null,
 
-    @Schema(description = "景點所在行政區", example = "中正區")
-    private String district;
+    @field:Schema(description = "所在區域", example = "中正區")
+    var district: String? = null,
 
-    @Schema(description = "景點類別", example = "石雕")
-    private String category;
+    @field:Schema(description = "景點類別", example = "石雕")
+    var category: String? = null,
 
-    @Schema(
-            description = "景點介紹",
-            example = "基隆私房景點，縮小版智利\uD83C\uDDE8\uD83C\uDDF1復活節島！\n" +
-                    "還有遊艇\uD83D\uDEE5\uFE0F、基隆嶼、基隆的海❤\uFE0F"
+    @field:Schema(
+        description = "景點描述",
+        example = "基隆私房景點，縮小版智利\uD83C\uDDE8\uD83C\uDDF1復活節島！\n還有遊艇\uD83D\uDEE5\uFE0F、基隆嶼、基隆的海❤\uFE0F"
     )
-    private String description;
+    var description: String? = null,
 
-    @Schema(description = "景點地址", example = "基隆市中正區北寧路2號")
-    private String address;
+    @field:Schema(description = "景點地址", example = "基隆市中正區北寧路2號")
+    var address: String? = null,
 
-    @Schema(description = "地圖連結", example = "https://maps.app.goo.gl/MXQsFcCQkUYHhUk87")
-    private String mapURL;
+    @field:Schema(description = "地圖連結", example = "https://maps.app.goo.gl/MXQsFcCQkUYHhUk87")
+    var mapUrl: String? = null,
 
-    @Schema(description = "景點照片", example = "https://lh3.googleusercontent" +
-            ".com/geougc-cs/AB3l90B5FADQ9qRvuKIdl5TOraPfSEV1ym_mZh7_2Vqusq_" +
-            "-Gjfp7TcZgpzkESN9RSFxJaiYx3xH3YicIdAfqkPhyKZRA0dGoN6qD3mZmIVjyDZWQsT180qcaE7qGIMzbLKKz7IfmIAQ=w2048" +
-            "-h1536-p")
-    private String photoURL;
+    @field:Schema(description = "照片連結", example = "/static/dumdum.jpg")
+    var photoUrl: String? = null,
 
-    @Schema(description = "來源網址", example = "https://www.example.com/dumdum")
-    private String sourceURL;
+    @field:Schema(description = "資料來源網址", example = "https://www.example.com/dumdum")
+    var sourceUrl: String? = null
+) : Serializable
 
-}
+// https://lh3.googleusercontent.com/geougc-cs/AB3l90B5FADQ9qRvuKIdl5TOraPfSEV1ym_mZh7_2Vqusq_-Gjfp7TcZgpzkESN9RSFxJaiYx3xH3YicIdAfqkPhyKZRA0dGoN6qD3mZmIVjyDZWQsT180qcaE7qGIMzbLKKz7IfmIAQ=w2048-h1536-p

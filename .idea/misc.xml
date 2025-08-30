@@ -5,8 +5,10 @@
     <option name="description" value="" />
   </component>
   <component name="EntryPointsManager">
-    <list size="1">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="org.springframework.stereotype.Controller" />
+      <item index="1" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.ExceptionHandler" />
+      <item index="2" class="java.lang.String" itemvalue="org.springframework.web.bind.annotation.GetMapping" />
     </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
