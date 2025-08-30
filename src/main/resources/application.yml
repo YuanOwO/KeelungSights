@@ -1,11 +1,12 @@
 spring:
   application:
-    name: keelungsightsviewer
+    name: KeelungSightsViewer
   mvc:
     throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
   web:
     resources:
-      add-mappings: false
+      static-locations: classpath:/static/
 
 server:
   port: 8080
