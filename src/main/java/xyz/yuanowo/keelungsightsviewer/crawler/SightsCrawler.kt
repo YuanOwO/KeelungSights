@@ -10,7 +10,7 @@ import xyz.yuanowo.keelungsightsviewer.model.Sight
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
 
-fun main(args: Array<String>) {
+fun main() {
     println("Hello, SightsCrawler!")
     val crawler = SightsCrawler()
 
@@ -40,10 +40,10 @@ class SightsCrawler {
 
     private suspend fun fetchHtml(url: String): Document? = withContext(Dispatchers.IO) {
         try {
-            println("Fetching URL: ${Companion.BASE_URL}$url")
+            println("Fetching URL: $url")
             val request = Request.Builder()
-                .url(Companion.BASE_URL + url)
-                .header("User-Agent", Companion.UA)
+                .url(BASE_URL + url)
+                .header("User-Agent", UA)
                 .build()
             client.newCall(request).execute().use { response ->
                 if (response.isSuccessful)
@@ -89,7 +89,7 @@ class SightsCrawler {
     suspend fun fetchSightDetails(url: String): Sight? = withContext(Dispatchers.IO) {
         val doc = fetchHtmlWithRetry(url) ?: return@withContext null
         val address = doc.selectFirst(".address a")
-        val img = doc.selectFirst("#galleria .swiper-slide img");
+        val img = doc.selectFirst("#galleria .swiper-slide img")
         Sight(
             id = CrawlerUtils.getIDFromURL(url),
             name = doc.selectFirst("h1 > span")?.text(),
@@ -100,7 +100,7 @@ class SightsCrawler {
             address = address?.text(),
             mapUrl = address?.attr("href"),
             photoUrl = img?.attr("data-src") ?: img?.attr("src"),
-            sourceUrl = Companion.BASE_URL + url
+            sourceUrl = BASE_URL + url
         )
     }
 

@@ -8,10 +8,6 @@ class CrawlerUtils {
 
     companion object {
 
-        fun hello() {
-            println("Hello, CrawlerUtils!")
-        }
-
         fun getIDFromURL(url: String): Int? {
             val matchResult = Regex("/tourguide/scenery(\\d+)\\.html").find(url)
             return matchResult?.groups?.get(1)?.value?.toIntOrNull()
