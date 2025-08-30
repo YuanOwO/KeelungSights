@@ -34,7 +34,7 @@ public class HelloController {
             description = "I'm a teapot",
             content = @Content(schema = @Schema(implementation = ResponseMessage.class))
     )
-    @GetMapping("/")
+    @GetMapping("/hello")
     public ResponseMessage hello(
             @Schema(description = "你的名字", pattern = "^[a-zA-Z0-9_]+$", example = "Alice", defaultValue = "World")
             @Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "name 只能由英文字母、數字和底線組成")
