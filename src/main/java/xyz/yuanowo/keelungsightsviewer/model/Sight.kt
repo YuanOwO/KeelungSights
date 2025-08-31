@@ -32,7 +32,7 @@ data class Sight(
     @field:Schema(description = "地圖連結", example = "https://maps.app.goo.gl/MXQsFcCQkUYHhUk87")
     var mapUrl: String? = null,
 
-    @field:Schema(description = "照片連結", example = "/static/dumdum.jpg")
+    @field:Schema(description = "照片連結", example = "/image/dumdum.jpg")
     var photoUrl: String? = null,
 
     @field:Schema(description = "資料來源網址", example = "https://www.example.com/dumdum")

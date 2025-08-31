@@ -20,12 +20,12 @@ fun main() {
     }
 }
 
-val pool = ConnectionPool(10, 5, TimeUnit.MINUTES)
+val pool = ConnectionPool(10, 3, TimeUnit.MINUTES)
 
 val client = OkHttpClient.Builder()
     .connectionPool(pool)
     .connectTimeout(5, TimeUnit.SECONDS)
-    .readTimeout(5, TimeUnit.SECONDS)
+    .readTimeout(10, TimeUnit.SECONDS)
     .build()
 
 class SightsCrawler {
