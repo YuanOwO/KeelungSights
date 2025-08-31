@@ -1,0 +1,17 @@
+/* Sight Page */
+
+#sight-carousel img,
+#sight-carousel svg {
+    display: block;
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+#sight-info div {
+    display: inline-block;
+
+    &:not(:first-child)::before {
+        content: "．";
+    }
+}

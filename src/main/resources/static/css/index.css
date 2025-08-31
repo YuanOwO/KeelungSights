@@ -1,0 +1,16 @@
+#index a {
+    text-decoration: none;
+    margin-right: 0.5em;
+
+    &::before {
+        content: "[";
+        color: black;
+        margin-right: 0.125em;
+    }
+
+    &::after {
+        content: "]";
+        color: black;
+        margin-left: 0.125em;
+    }
+}
