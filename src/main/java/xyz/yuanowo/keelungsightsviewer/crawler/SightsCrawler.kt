@@ -14,10 +14,13 @@ fun main() {
     println("Hello, SightsCrawler!")
     val crawler = SightsCrawler()
 
-    for (district in listOf("七堵", "中山", "中正", "仁愛", "安樂", "信義", "暖暖", "大安", "大安鄉")) {
-        val sights = crawler.fetchSightsListSync(district)
-        println("Found ${sights.size} sights in $district")
-    }
+    val sights = crawler.fetchSightsListSync()
+    println("Found ${sights.size} sights in total")
+
+//    for (district in listOf("七堵", "中山", "中正", "仁愛", "安樂", "信義", "暖暖", "大安", "大安鄉")) {
+//        val sights = crawler.fetchSightsListSync(district)
+//        println("Found ${sights.size} sights in $district")
+//    }
 }
 
 val pool = ConnectionPool(10, 3, TimeUnit.MINUTES)
@@ -27,6 +30,9 @@ val client = OkHttpClient.Builder()
     .connectTimeout(5, TimeUnit.SECONDS)
     .readTimeout(10, TimeUnit.SECONDS)
     .build()
+
+@OptIn(ExperimentalCoroutinesApi::class)
+val limitedIO = Dispatchers.IO.limitedParallelism(10)
 
 class SightsCrawler {
 
@@ -38,22 +44,18 @@ class SightsCrawler {
 
     }
 
-    private suspend fun fetchHtml(url: String): Document? = withContext(Dispatchers.IO) {
-        try {
-            println("Fetching URL: $url")
-            val request = Request.Builder()
-                .url(BASE_URL + url)
-                .header("User-Agent", UA)
-                .build()
-            client.newCall(request).execute().use { response ->
-                if (response.isSuccessful)
-                    response.body?.let { Jsoup.parse(it.string()) }
-                else
-                    null
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
+    private suspend fun fetchHtml(url: String): Document? = withContext(limitedIO) {
+        println("Fetching URL: $url")
+        val request = Request.Builder()
+            .url(BASE_URL + url)
+            .header("User-Agent", UA)
+            .build()
+        client.newCall(request).execute().use { response ->
+            println("Fetched URL: $url - Status: ${response.code}")
+            if (response.isSuccessful)
+                response.body?.let { Jsoup.parse(it.string()) }
+            else
+                null
         }
     }
 
@@ -71,22 +73,31 @@ class SightsCrawler {
         return null
     }
 
-    fun fetchSightsListSync(district: String): List<Sight> = runBlocking { fetchSightsList(district) }
+    fun fetchSightsListSync(district: String? = null): List<Sight> = runBlocking { fetchSightsList(district) }
 
     fun fetchSightDetailsSync(url: String): Sight? = runBlocking { fetchSightDetails(url) }
 
-    suspend fun fetchSightsList(district: String): List<Sight> = withContext(Dispatchers.IO) {
-        val doc = fetchHtmlWithRetry("/tourguide/taiwan/keelungcity/")
-        val ul = doc?.selectFirst("h4:contains(${district}) + ul") ?: return@withContext emptyList()
-        ul.children().map { li ->
+    suspend fun fetchSightsList(district: String? = null): List<Sight> = withContext(limitedIO) {
+        val doc = fetchHtmlWithRetry("/tourguide/taiwan/keelungcity/") ?: return@withContext emptyList()
+
+        val cssQuery = if (district == null) "#guide-point ul a" else "h4:contains(${district}) + ul a"
+        val links = doc.select(cssQuery)
+
+        println("Found ${links.size} sight links")
+        for (link in links) {
+            println(" - $link")
+        }
+
+        links.map { li ->
             async {
-                val url = li.child(0).attr("href")
+                val url = li.attr("href")
                 fetchSightDetails(url)
             }
         }.awaitAll().filterNotNull()
+
     }
 
-    suspend fun fetchSightDetails(url: String): Sight? = withContext(Dispatchers.IO) {
+    suspend fun fetchSightDetails(url: String): Sight? = withContext(limitedIO) {
         val doc = fetchHtmlWithRetry(url) ?: return@withContext null
         val address = doc.selectFirst(".address a")
         val img = doc.selectFirst("#galleria .swiper-slide img")

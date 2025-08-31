@@ -48,12 +48,12 @@ public class GlobalExceptionHandler {
         return new ResponseMessage(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
-//    // 處理未知例外
-//    @ExceptionHandler
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
-//    public ResponseMessage handleGenericException(Exception ex) {
-//        System.out.println(ex.getMessage());
-//        return new ResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
-//    }
+    // 處理未知例外
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) // 500
+    public ResponseMessage handleGenericException(Exception ex) {
+        ex.printStackTrace(); // 印出錯誤堆疊追蹤以便除錯
+        return new ResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+    }
 
 }
