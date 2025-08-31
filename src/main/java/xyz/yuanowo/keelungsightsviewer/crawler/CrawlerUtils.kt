@@ -8,9 +8,9 @@ class CrawlerUtils {
 
     companion object {
 
-        fun getIDFromURL(url: String): Int? {
+        fun getIDFromURL(url: String): Long? {
             val matchResult = Regex("/tourguide/scenery(\\d+)\\.html").find(url)
-            return matchResult?.groups?.get(1)?.value?.toIntOrNull()
+            return matchResult?.groups?.get(1)?.value?.toLongOrNull()
         }
 
         fun appendLF(sb: StringBuilder) {
