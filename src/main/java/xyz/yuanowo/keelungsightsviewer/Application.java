@@ -25,7 +25,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                         言：「少而好學，如日出之陽；壯而好學，如日中之光；老而好學，如炳燭之明。」這句話給了我很大的啟發。解\
                         決基隆旅遊景點問題，對我們來說，意義非凡。這幾天，我一直在深思這個問題，並將帶著這些問題去探索基隆\
                         旅遊景點的發展。""",
-                version = "0.0.1",
+                version = "1.0.0",
                 contact = @Contact(
                         name = "howard_kuo",
                         url = "https://howard522.github.io/",

@@ -13,7 +13,7 @@
 
     <groupId>xyz.yuanowo</groupId>
     <artifactId>keelungsightsviewer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <name>KeelungSightsViewer</name>
     <description>Demo project for Spring Boot</description>
