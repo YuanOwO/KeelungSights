@@ -8,6 +8,11 @@ body {
     flex-direction: column;
 }
 
+a {
+    color: inherit;
+    text-underline-offset: 0.125em;
+}
+
 .page .container-md {
     margin-top: 3rem;
     margin-bottom: 3rem;

@@ -35,7 +35,7 @@ class CrawlerUtils { companion object {
                             append(getTextFromElement(e))
                         } else {
                             when (e.tagName()) {
-                                "a" -> append(text)
+                                "a" -> append("[$text](${e.attr("href")})")
                                 "strong" -> append("**$text**")
                                 "br" -> append("\n")
                                 "h4" -> {

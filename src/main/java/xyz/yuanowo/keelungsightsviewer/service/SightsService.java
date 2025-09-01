@@ -21,7 +21,6 @@ public class SightsService {
     @EventListener(ApplicationReadyEvent.class)
     public void crawler() {
         // Server 啟動完畢再開始爬蟲
-        System.out.println("SightsService initialized");
         SightsCrawler crawler = new SightsCrawler();
         System.out.println("Start crawling sights...");
         List<Sight> sights = crawler.fetchSightsListSync(null);

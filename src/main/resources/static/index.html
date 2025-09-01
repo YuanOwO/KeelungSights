@@ -1,256 +1,268 @@
 <!DOCTYPE html>
 <html lang="zh_TW">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>基隆景點瀏覽器</title>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>基隆景點瀏覽器</title>
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/image/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon-16x16.png" />
-        <link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico" />
-        <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/image/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon-16x16.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico"/>
+    <link rel="manifest" href="/site.webmanifest"/>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-        <link
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"/>
+    <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-        />
-        <link rel="stylesheet" href="/css/style.css" />
-        <link rel="stylesheet" href="/css/index.css" />
-        <link rel="stylesheet" href="/css/list.css" />
-        <link rel="stylesheet" href="/css/sight.css" />
-    </head>
-    <body>
-        <header class="navbar navbar-expand-md p-3 bg-body-tertiary">
-            <nav class="container-md">
-                <a class="navbar-brand" href="#/">
-                    <img
-                        src="https://www.gstatic.com/android/keyboard/emojikitchen/20230803/u1f47e/u1f47e_u1f414.png"
-                        alt="Logo"
-                        width="30"
-                        height="24"
-                        class="d-inline-block align-text-top"
-                    />
-                    基隆景點瀏覽器
-                </a>
+    />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/list.css"/>
+    <link rel="stylesheet" href="/css/sight.css"/>
+</head>
+<body>
+<header class="navbar navbar-expand-md p-3 bg-body-tertiary">
+    <nav class="container-md">
+        <a class="navbar-brand" href="#/">
+            <img
+                    src="https://www.gstatic.com/android/keyboard/emojikitchen/20230803/u1f47e/u1f47e_u1f414.png"
+                    alt="Logo"
+                    width="30"
+                    height="24"
+                    class="d-inline-block align-text-top"
+            />
+            基隆景點瀏覽器
+        </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a id="nav-home" class="nav-link" href="#/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="nav-仁愛" class="nav-link" href="#/仁愛">仁愛</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="nav-信義" class="nav-link" href="#/信義">信義</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="nav-中正" class="nav-link" href="#/中正">中正</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="nav-中山" class="nav-link" href="#/中山">中山</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="nav-安樂" class="nav-link" href="#/安樂">安樂</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="nav-暖暖" class="nav-link" href="#/暖暖">暖暖</a>
-                        </li>
-                        <li class="nav-item">
-                            <a id="nav-七堵" class="nav-link" href="#/七堵">七堵</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a id="nav-home" class="nav-link" href="#/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-仁愛" class="nav-link" href="#/仁愛">仁愛</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-信義" class="nav-link" href="#/信義">信義</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-中正" class="nav-link" href="#/中正">中正</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-中山" class="nav-link" href="#/中山">中山</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-安樂" class="nav-link" href="#/安樂">安樂</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-暖暖" class="nav-link" href="#/暖暖">暖暖</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-七堵" class="nav-link" href="#/七堵">七堵</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-        <section id="index" class="page">
-            <main class="container-md">
-                <h1 class="mb-4">Hello 基隆!</h1>
+<section id="index" class="page">
+    <main class="container-md">
+        <h1 class="mb-4">Hello 基隆!</h1>
 
-                <img class="img-fluid rounded mx-auto d-block" src="/image/map.jpg" alt="基隆市" />
+        <img class="img-fluid rounded mx-auto d-block" src="/image/map.jpg" alt="基隆市"/>
 
-                <p class="text-center">
-                    <a href="#/仁愛">仁愛區</a>
-                    <a href="#/信義">信義區</a>
-                    <a href="#/中正">中正區</a>
-                    <a href="#/中山">中山區</a>
-                    <a href="#/安樂">安樂區</a>
-                    <a href="#/暖暖">暖暖區</a>
-                    <a href="#/七堵">七堵區</a>
-                </p>
+        <p class="districts text-center">
+            <a href="#/仁愛">仁愛區</a>
+            <a href="#/信義">信義區</a>
+            <a href="#/中正">中正區</a>
+            <a href="#/中山">中山區</a>
+            <a href="#/安樂">安樂區</a>
+            <a href="#/暖暖">暖暖區</a>
+            <a href="#/七堵">七堵區</a>
+        </p>
 
-                <h3>基隆市的地理位置</h3>
-                <p>
-                    基隆市位於台灣北部東經 121.6 度、北緯 24.9 度，面積為 132.7589 平方公里，是台灣直轄縣市面積排名第 18
-                    大且最北端的都市。基隆市東、西、南三面環山，只有少部分的平原地區延伸至海因此是一個良港，在冬季時多雨因此又稱為「雨港」、「雨都」，行政區域劃分為仁愛區、中正區、信義區、安樂區、中山區、七堵區、暖暖區等
-                    7 區；基隆市花為紫薇、杜鵑，市樹為楓香，市鳥為黑鳶。
-                </p>
-                <h3>基隆市的歷史發展</h3>
-                <p>
-                    基隆舊稱「雞籠」，雞籠的由來有許多說法，一種說法認為係由「雞籠山」（基隆山）得名，一說是在基隆港外的和平島形狀頗似雞籠，故有雞籠之名，另外還有一種較可靠的說法是漢人將原本居住於基隆一帶的平埔族原住民凱達格蘭族（Ketagalan）取頭尾的
-                    ke 和 lan 兩音簡化而成。基隆為雞籠開發之始自 17
-                    世紀時西班牙人和荷蘭人先後佔領時期，在英法聯軍之役之後雞籠終於隨著台灣開港而開放為貿易港並於 1875
-                    年改名為基隆；後來台灣巡撫劉銘傳沿著港區興建數座砲臺，其中包括了海門天險（二沙灣砲台）獅球嶺砲台、獅球嶺隧道、白米甕砲台，台灣最早的縱貫鐵路也以基隆作為起點，進入市區前所開鑿的獅球嶺隧道更是當時中國的第一條鐵路隧道；而基隆港從
-                    1961 年因應台灣經濟的快速成長，到 1984
-                    年已名列世界第七大貨櫃港，但隨著腹地狹小、大型港口興起等因素，基隆港漸漸失去競爭力，目前以發展觀光產業為主。
-                </p>
-                <h3>基隆市的廟口、漁港、鳳梨酥</h3>
-                <p>
-                    基隆廟口位於基隆市仁愛區的精華地帶，其中仁三路擁有許多著名的小吃像是泡泡冰、鼎邊銼、營養三明治、蚵仔煎、蝦仁羹、豆簽羹、天婦羅等等，愛四路則有甜酒釀元宵、鰻魚羹、豬腳專家、奶油螃蟹以及生活用品雜貨等店家，內容十分豐富。基隆碧砂漁港是一個觀光漁市，集了數十家生鮮海產店，供應各式各樣漁產，從遠洋、近海、沿岸、養殖應有盡有，也可在漁市場選購的之海產交給店家代為料理；基隆市著名的特產鳳梨酥，老店所堅持的傳統味道讓您回味無窮，還有咖哩酥、綠豆椪、蛋黃酥等美味點心讓您擁有更多的選擇唷！
-                </p>
-            </main>
-        </section>
+        <h3>基隆市的地理位置</h3>
+        <p>
+            基隆市位於台灣北部東經 121.6 度、北緯 24.9 度，面積為 132.7589 平方公里，是台灣直轄縣市面積排名第 18
+            大且最北端的都市。基隆市東、西、南三面環山，只有少部分的平原地區延伸至海因此是一個良港，在冬季時多雨因此又稱為「雨港」、「雨都」，行政區域劃分為仁愛區、中正區、信義區、安樂區、中山區、七堵區、暖暖區等
+            7 區；基隆市花為紫薇、杜鵑，市樹為楓香，市鳥為黑鳶。
+        </p>
+        <h3>基隆市的歷史發展</h3>
+        <p>
+            基隆舊稱「雞籠」，雞籠的由來有許多說法，一種說法認為係由「雞籠山」（基隆山）得名，一說是在基隆港外的和平島形狀頗似雞籠，故有雞籠之名，另外還有一種較可靠的說法是漢人將原本居住於基隆一帶的平埔族原住民凱達格蘭族（Ketagalan）取頭尾的
+            ke 和 lan 兩音簡化而成。基隆為雞籠開發之始自 17
+            世紀時西班牙人和荷蘭人先後佔領時期，在英法聯軍之役之後雞籠終於隨著台灣開港而開放為貿易港並於 1875
+            年改名為基隆；後來台灣巡撫劉銘傳沿著港區興建數座砲臺，其中包括了海門天險（二沙灣砲台）獅球嶺砲台、獅球嶺隧道、白米甕砲台，台灣最早的縱貫鐵路也以基隆作為起點，進入市區前所開鑿的獅球嶺隧道更是當時中國的第一條鐵路隧道；而基隆港從
+            1961 年因應台灣經濟的快速成長，到 1984
+            年已名列世界第七大貨櫃港，但隨著腹地狹小、大型港口興起等因素，基隆港漸漸失去競爭力，目前以發展觀光產業為主。
+        </p>
+        <h3>基隆市的廟口、漁港、鳳梨酥</h3>
+        <p>
+            基隆廟口位於基隆市仁愛區的精華地帶，其中仁三路擁有許多著名的小吃像是泡泡冰、鼎邊銼、營養三明治、蚵仔煎、蝦仁羹、豆簽羹、天婦羅等等，愛四路則有甜酒釀元宵、鰻魚羹、豬腳專家、奶油螃蟹以及生活用品雜貨等店家，內容十分豐富。基隆碧砂漁港是一個觀光漁市，集了數十家生鮮海產店，供應各式各樣漁產，從遠洋、近海、沿岸、養殖應有盡有，也可在漁市場選購的之海產交給店家代為料理；基隆市著名的特產鳳梨酥，老店所堅持的傳統味道讓您回味無窮，還有咖哩酥、綠豆椪、蛋黃酥等美味點心讓您擁有更多的選擇唷！
+        </p>
+    </main>
+</section>
 
-        <section id="list" class="page">
-            <main class="container-md">
-                <h1 class="mb-4">Hello List!</h1>
+<section id="list" class="page">
+    <main class="container-md">
+        <h1 class="mb-4">Hello List!</h1>
 
-                <div id="card-sample" class="card d-none">
-                    <div class="ratio ratio-16x9">
-                        <img class="card-img-top" src="" alt="" />
-                    </div>
-                    <div class="card-body">
-                        <h4><a class="card-title" href=""></a></h4>
-                        <p class="card-text"></p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="bi bi-tag"></i><span class="card-category"></span></li>
-                        <li class="list-group-item">
-                            <i class="bi bi-geo-alt"></i
-                            ><a class="card-address" href="" target="_blank" rel="noopener noreferrer"></a>
-                        </li>
-                        <li class="list-group-item">
-                            <i class="bi bi-box-arrow-up-right"></i
-                            ><a class="card-source" href="" target="_blank" rel="noopener noreferrer">資料來源</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div id="cards-list" class="d-flex flex-row flex-wrap gap-3"></div>
-            </main>
-        </section>
-
-        <section id="sight" class="page">
-            <div id="sight-carousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" class="active" data-bs-target="#sight-carousel" data-bs-slide-to="0"></button>
-                    <button type="button" data-bs-target="#sight-carousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#sight-carousel" data-bs-slide-to="2"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                        <svg
-                            class="d-block w-100"
-                            role="img"
-                            width="800"
-                            height="400"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#666"></rect>
-                            <text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text>
-                        </svg>
-                    </div>
-                    <div class="carousel-item">
-                        <svg
-                            class="d-block w-100"
-                            role="img"
-                            width="800"
-                            height="400"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#666"></rect>
-                            <text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text>
-                        </svg>
-                    </div>
-                </div>
-                <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#sight-carousel"
-                    data-bs-slide="prev"
-                >
-                    <span class="carousel-control-prev-icon"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#sight-carousel"
-                    data-bs-slide="next"
-                >
-                    <span class="carousel-control-next-icon"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+        <div id="card-sample" class="card d-none">
+            <div class="ratio ratio-16x9">
+                <img class="card-img-top" src="" alt=""/>
             </div>
-
-            <main class="container-md">
-                <h1 id="sight-title">海洋廣場</h1>
-
-                <div id="sight-info" class="mb-3">
-                    <div><i class="bi bi-tag"></i><span id="sight-category">類別</span></div>
-                    <div>
-                        <i class="bi bi-geo-alt"></i
-                        ><a id="sight-address" href="" target="_blank" rel="noopener noreferrer">地址</a>
-                    </div>
-                </div>
-
-                <div id="sight-description"></div>
-
-                <!-- "https://www.google.com.tw/maps/search/25.13115,121.7408" -->
-                <!-- <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3612.134300742106!2d121.7408!3d25.131149999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDA3JzUyLjEiTiAxMjHCsDQ0JzI2LjkiRQ!5e0!3m2!1szh-TW!2stw!4v1756637871344!5m2!1szh-TW!2stw"
-                    width="600"
-                    height="450"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                ></iframe> -->
-            </main>
-        </section>
-
-        <section id="404" class="page flex-center flex-grow-1">
-            <img loading="lazy" width="256px" height="256px" alt="chicken-404" src="/image/404.png" />
-            <h1>404 Not Found</h1>
-            <div>抱歉，您所尋找的頁面不存在。</div>
-            <div>點擊<a href="#/">這裡</a>返回首頁</div>
-            <pre id="error-detail"></pre>
-        </section>
-
-        <footer class="footer container-md mt-auto">
-            <div class="py-3 my-4 border-top">
-                <div class="text-center text-body-secondary">&copy; 2025 YuanOwO.</div>
+            <div class="card-body">
+                <h4><a class="card-title" href=""></a></h4>
+                <p class="card-text"></p>
             </div>
-        </footer>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="bi bi-tag"></i><span class="card-category"></span></li>
+                <li class="list-group-item">
+                    <i class="bi bi-geo-alt"></i
+                    ><a class="card-address" href="" target="_blank" rel="noopener noreferrer"></a>
+                </li>
+                <li class="list-group-item">
+                    <i class="bi bi-box-arrow-up-right"></i
+                    ><a class="card-source" href="" target="_blank" rel="noopener noreferrer">資料來源</a>
+                </li>
+            </ul>
+        </div>
 
-        <div id="loading" class="flex-center d-none">
-            <img rel="preload" width="256px" height="256px" alt="loading.png" src="/image/loading1.png" />
-            <div class="mt-4">
-                <span>L</span>
-                <span>O</span>
-                <span>A</span>
-                <span>D</span>
-                <span>I</span>
-                <span>N</span>
-                <span>G</span>
+        <div id="cards-list" class="d-flex flex-row flex-wrap gap-3"></div>
+    </main>
+</section>
+
+<section id="sight" class="page">
+    <div id="sight-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" class="active" data-bs-target="#sight-carousel" data-bs-slide-to="0"></button>
+            <button type="button" data-bs-target="#sight-carousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#sight-carousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/image/dumdum.jpg" alt="img"/>
+            </div>
+            <div class="carousel-item">
+                <svg
+                        class="d-block w-100"
+                        role="img"
+                        width="600"
+                        height="400"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <rect width="100%" height="100%" fill="#666"></rect>
+                    <text x="50%" y="50%" fill="#444" text-anchor="middle">Second Image</text>
+                </svg>
+            </div>
+            <div class="carousel-item">
+                <svg
+                        class="d-block w-100"
+                        role="img"
+                        width="600"
+                        height="400"
+                        xmlns="http://www.w3.org/2000/svg"
+                >
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#555"></rect>
+                    <text x="50%" y="50%" fill="#333" text-anchor="middle">Third Image</text>
+                </svg>
+            </div>
+        </div>
+        <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#sight-carousel"
+                data-bs-slide="prev"
+        >
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#sight-carousel"
+                data-bs-slide="next"
+        >
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <main class="container-md">
+        <h1 id="sight-title">摩艾DUMDUM</h1>
+
+        <div id="sight-info" class="mb-3">
+            <div><i class="bi bi-tag"></i><span id="sight-category">石雕</span></div>
+            <div>
+                <i class="bi bi-geo-alt"></i
+                ><a
+                    id="sight-address"
+                    href="https://maps.app.goo.gl/MXQsFcCQkUYHhUk87"
+                    target="_blank"
+                    rel="noopener noreferrer"
+            >基隆市中正區北寧路2號</a
+            >
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
-        <script src="/js/script.js"></script>
-    </body>
+        <div id="sight-description">
+            基隆私房景點，縮小版智利🇨🇱復活節島！
+            <br/>
+            還有遊艇🛥️、基隆嶼、基隆的海❤️
+        </div>
+
+        <div>資料來源：<a id="sight-source" href="https://youtu.be/dQw4w9WgXcQ" target="_blank"
+                         rel="noopener noreferrer">TravelKing 旅遊王</a></div>
+
+        <!-- "https://www.google.com.tw/maps/search/25.13115,121.7408" -->
+        <!-- <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3612.134300742106!2d121.7408!3d25.131149999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDA3JzUyLjEiTiAxMjHCsDQ0JzI2LjkiRQ!5e0!3m2!1szh-TW!2stw!4v1756637871344!5m2!1szh-TW!2stw"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+        ></iframe> -->
+    </main>
+</section>
+
+<section id="404" class="page flex-center flex-grow-1">
+    <img loading="lazy" width="256px" height="256px" alt="chicken-404" src="/image/404.png"/>
+    <h1>404 Not Found</h1>
+    <div>抱歉，您所尋找的頁面不存在。</div>
+    <div>點擊<a href="#/">這裡</a>返回首頁</div>
+    <pre id="error-detail"></pre>
+</section>
+
+<footer class="footer container-md mt-auto">
+    <div class="py-3 my-4 border-top">
+        <div class="text-center text-body-secondary">&copy; 2025 YuanOwO.</div>
+    </div>
+</footer>
+
+<div id="loading" class="flex-center d-none">
+    <img rel="preload" width="256px" height="256px" alt="loading.png" src="/image/loading1.png"/>
+    <div class="mt-4">
+        <span>L</span>
+        <span>O</span>
+        <span>A</span>
+        <span>D</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
 </html>

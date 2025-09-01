@@ -45,10 +45,10 @@ class SightsCrawler {
     }
 
     private suspend fun fetchHtml(url: String): Document? = withContext(limitedIO) {
-        println("Fetching URL: $url")
+        println("Fetching URL: $BASE_URL$url")
         val request = Request.Builder().url(BASE_URL + url).header("User-Agent", UA).build()
         client.newCall(request).execute().use { response ->
-            println("Fetched URL: $url - Status: ${response.code}")
+            println("Fetched URL: $BASE_URL$url (Status: ${response.code})")
             if (response.isSuccessful) response.body?.let { Jsoup.parse(it.string()) }
             else null
         }
@@ -60,7 +60,7 @@ class SightsCrawler {
             try {
                 return fetchHtml(url)
             } catch (ex: SocketTimeoutException) {
-                println("Timeout when fetching $url (attempt ${attempt + 1}/$retries)")
+                println("Timeout when fetching $BASE_URL$url (attempt ${attempt + 1}/$retries)")
                 delay(waitTime)
                 waitTime *= 2
             }
@@ -79,7 +79,7 @@ class SightsCrawler {
         val links = doc.select(cssQuery)
 
         println("Found ${links.size} sight links")
-        for (link in links) println(" - $link")
+        for (link in links) println(" - [${link.text()}](${link?.attr("href")})")
 
         links.map { li ->
             async {
