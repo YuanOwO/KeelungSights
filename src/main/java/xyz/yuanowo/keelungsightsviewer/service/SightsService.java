@@ -31,17 +31,14 @@ public class SightsService {
     }
 
     public List<Sight> getSightsByDistrict(String district) {
-        if (!district.endsWith("區"))
-            district += "區";
+        if (!district.endsWith("區")) district += "區";
         return sightDao.findByDistrict(district);
     }
 
     public Sight getSightById(Long id) {
         Sight sight = sightDao.findById(id);
-        if (sight == null)
-            throw new NotFoundException("未知的景點 ID: " + id);
+        if (sight == null) throw new NotFoundException("未知的景點 ID: " + id);
         return sight;
-
     }
 
 }

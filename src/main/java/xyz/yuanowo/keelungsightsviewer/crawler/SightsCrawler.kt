@@ -46,16 +46,11 @@ class SightsCrawler {
 
     private suspend fun fetchHtml(url: String): Document? = withContext(limitedIO) {
         println("Fetching URL: $url")
-        val request = Request.Builder()
-            .url(BASE_URL + url)
-            .header("User-Agent", UA)
-            .build()
+        val request = Request.Builder().url(BASE_URL + url).header("User-Agent", UA).build()
         client.newCall(request).execute().use { response ->
             println("Fetched URL: $url - Status: ${response.code}")
-            if (response.isSuccessful)
-                response.body?.let { Jsoup.parse(it.string()) }
-            else
-                null
+            if (response.isSuccessful) response.body?.let { Jsoup.parse(it.string()) }
+            else null
         }
     }
 
@@ -84,9 +79,7 @@ class SightsCrawler {
         val links = doc.select(cssQuery)
 
         println("Found ${links.size} sight links")
-        for (link in links) {
-            println(" - $link")
-        }
+        for (link in links) println(" - $link")
 
         links.map { li ->
             async {
@@ -99,20 +92,17 @@ class SightsCrawler {
 
     suspend fun fetchSightDetails(url: String): Sight? = withContext(limitedIO) {
         val doc = fetchHtmlWithRetry(url) ?: return@withContext null
+
         val address = doc.selectFirst(".address a")
         val img = doc.selectFirst("#galleria .swiper-slide img")
-        Sight(
-            id = CrawlerUtils.getIDFromURL(url),
-            name = doc.selectFirst("h1 > span")?.text(),
-            city = doc.selectFirst(".breadcrumb .bc_li:nth-last-child(2) a")?.text(),
-            district = doc.selectFirst(".breadcrumb .bc_last a")?.text(),
-            category = doc.selectFirst(".point_type > span:nth-child(2)")?.text(),
-            description = CrawlerUtils.getTextFromElement(doc.selectFirst(".text")),
-            address = address?.text(),
-            mapUrl = address?.attr("href"),
-            photoUrl = img?.attr("data-src") ?: img?.attr("src"),
-            sourceUrl = BASE_URL + url
-        )
+
+        Sight(id = CrawlerUtils.getIDFromURL(url), name = doc.selectFirst("h1 > span")?.text(),
+              city = doc.selectFirst(".breadcrumb .bc_li:nth-last-child(2) a")?.text(),
+              district = doc.selectFirst(".breadcrumb .bc_last a")?.text(),
+              category = doc.selectFirst(".point_type > span:nth-child(2)")?.text(),
+              description = CrawlerUtils.getTextFromElement(doc.selectFirst(".text")), address = address?.text(),
+              mapUrl = address?.attr("href"), photoUrl = img?.attr("data-src") ?: img?.attr("src"),
+              sourceUrl = BASE_URL + url)
     }
 
 }

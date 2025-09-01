@@ -29,24 +29,18 @@ public class SightController {
     @Operation(summary = "取得景點列表", description = "根據行政區取得景點列表")
     @GetMapping("/sights")
     public ResponseList<Sight> getSightsList(
-            @Schema(description = "基隆市的行政區", example = "中正")
-            @NotNull(message = "行政區不可為空")
-            @RequestParam(name = "district")
-            String district
-    ) {
+            @Schema(description = "基隆市的行政區", example = "中正") @NotNull(message = "行政區不可為空")
+            @RequestParam(name = "district") String district
+                                            ) {
         List<Sight> sights = sightsService.getSightsByDistrict(district);
         return new ResponseList<>(sights);
     }
 
     @Operation(summary = "取得景點詳細資訊", description = "根據景點 ID 取得景點詳細資訊")
     @GetMapping("/sight/{id}")
-    public Sight getSightDetails(
-            @Schema(description = "景點 ID")
-            @NotNull(message = "ID 不可為空")
-            @Min(value = 1, message = "ID 必須是正整數")
-            @PathVariable(value = "id")
-            Long id
-    ) {
+    public Sight getSightDetails(@Schema(description = "景點 ID") @NotNull(message = "ID 不可為空")
+                                 @Min(value = 1, message = "ID 必須是正整數") @PathVariable(value = "id") Long id
+                                ) {
         return sightsService.getSightById(id);
     }
 

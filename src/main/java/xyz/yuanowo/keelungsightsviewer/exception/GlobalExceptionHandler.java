@@ -15,10 +15,8 @@ import xyz.yuanowo.keelungsightsviewer.model.ResponseMessage;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler({
-            MethodArgumentNotValidException.class, // @Valid 驗證失敗 (RequestBody)
-            ConstraintViolationException.class,    // @Validated 驗證失敗 (RequestParam, PathVariable)
-    })
+    @ExceptionHandler({ MethodArgumentNotValidException.class, // @Valid 驗證失敗 (RequestBody)
+                        ConstraintViolationException.class })  // @Validated 驗證失敗 (RequestParam, PathVariable)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseMessage handle422Exception(Exception ex) {
         return new ResponseMessage(HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage());
@@ -27,22 +25,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class) // 參數型別不匹配錯誤
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseMessage handleTypeMismatchException(MethodArgumentTypeMismatchException ex) {
-        return new ResponseMessage(
-                HttpStatus.UNPROCESSABLE_ENTITY,
-                String.format(
-                        "參數 '%s' 的值 '%s' 無法轉換為 '%s' 類型",
-                        ex.getName(),
-                        ex.getValue(),
-                        ex.getRequiredType() != null ? ex.getRequiredType().getSimpleName() : "未知"
-                )
-        );
+        return new ResponseMessage(HttpStatus.UNPROCESSABLE_ENTITY,
+                                   String.format("參數 '%s' 的值 '%s' 無法轉換為 '%s' 類型", ex.getName(),
+                                                 ex.getValue(),
+                                                 ex.getRequiredType() != null ? ex.getRequiredType().getSimpleName()
+                                                                              : "未知"));
     }
 
-    @ExceptionHandler({
-            NoHandlerFoundException.class,  // 找不到路徑的錯誤
-            NoResourceFoundException.class, // 靜態資源找不到的錯誤
-            NotFoundException.class         // 自訂的 NotFoundException
-    })
+    @ExceptionHandler({ NoHandlerFoundException.class,  // 找不到路徑的錯誤
+                        NoResourceFoundException.class, // 靜態資源找不到的錯誤
+                        NotFoundException.class })      // 自訂的 NotFoundException
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseMessage handle404Exception(Exception ex) {
         return new ResponseMessage(HttpStatus.NOT_FOUND, ex.getMessage());
