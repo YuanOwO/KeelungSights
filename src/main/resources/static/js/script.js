@@ -1,5 +1,5 @@
 const API = axios.create({
-    baseURL: "http://192.168.100.10:5050",
+    baseURL: location.origin,
     timeout: 3000,
     raxConfig: {
         retry: 3,
@@ -12,7 +12,7 @@ const mdCvter = new showdown.Converter();
 const showLoading = () => {
     let elem = document.getElementById("loading");
     elem.classList.remove("d-none");
-    elem.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500 });
+    elem.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 100 });
 };
 
 const hideLoading = () => {
@@ -66,9 +66,14 @@ const parseSight = (sight) => {
         return;
     }
 
-    let img = document.querySelector("#sight-carousel .carousel-item:first-child img");
+    let img = document.createElement("img");
     img.src = sight.photoUrl || "/image/blank.jpg";
     img.alt = sight.name;
+
+    let elem = document.querySelector("#sight-carousel .carousel-item:first-child");
+    elem.innerHTML = "";
+    elem.appendChild(img);
+    document.querySelector("#sight-carousel .carousel-indicators button:first-child").click();
 
     document.getElementById("sight-category").innerText = sight.category;
     document.getElementById("sight-address").innerText = sight.address;
@@ -117,7 +122,7 @@ const displayPage = (page, ...args) => {
                 displayPage("404", detail);
             })
             .finally(function () {
-                hideLoading();
+                setTimeout(hideLoading, 200);
             });
     }
 };
