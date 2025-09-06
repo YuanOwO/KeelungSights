@@ -81,6 +81,122 @@ a {
  *
  */
 
+/* Map */
+
+[data-town="仁愛區"] {
+    --fill-color: #d27a74;
+    --fill-color-hover: #ebc4c1;
+}
+
+[data-town="信義區"] {
+    --fill-color: #e0935e;
+    --fill-color-hover: #f1cfb7;
+}
+
+[data-town="中正區"] {
+    --fill-color: #e0ca48;
+    --fill-color-hover: #f1e7ad;
+}
+
+[data-town="中山區"] {
+    --fill-color: #83c262;
+    --fill-color-hover: #c8e4b9;
+}
+
+[data-town="暖暖區"] {
+    --fill-color: #69bcce;
+    --fill-color-hover: #bce1e9;
+}
+
+[data-town="七堵區"] {
+    --fill-color: #9a66be;
+    --fill-color-hover: #d2bbe2;
+}
+
+[data-town="安樂區"] {
+    --fill-color: #667dbe;
+    --fill-color-hover: #bbc5e2;
+}
+
+text {
+    font-size: 3rem;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: middle;
+
+    /* Unselectable */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+#background {
+    fill: lightblue;
+}
+
+svg a {
+    text-decoration: none;
+}
+
+.main-city [data-town] {
+    fill: var(--fill-color);
+    stroke: black;
+}
+
+.main-city :hover [data-town] {
+    fill: var(--fill-color-hover);
+}
+
+.main-city text {
+    fill: black;
+}
+
+.other-city :not(text):empty {
+    fill: #ebebeb;
+    stroke: #c5c5c5;
+}
+
+.other-city text {
+    fill: gray;
+}
+
+#scale-bar :not(text),
+#indicator :not(text) {
+    fill: black;
+    stroke: black;
+
+    &:first-child {
+        fill: white;
+    }
+}
+
+#indicator circle {
+    fill: none;
+}
+
+#scale-bar text,
+#indicator text {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+#scale-bar text {
+    dominant-baseline: text-before-edge;
+}
+
+#scale-bar text#unit {
+    text-anchor: start;
+}
+
+#indicator text {
+    dominant-baseline: text-after-edge;
+}
+
+/* Links */
+
 .districts a {
     color: var(--bs-link-color);
     text-decoration: none;
@@ -91,7 +207,6 @@ a {
         color: black;
         margin-right: 0.125em;
     }
-
     &::after {
         content: "]";
         color: black;
@@ -99,109 +214,15 @@ a {
     }
 }
 
-path[data-town="仁愛區"] {
-    --fill-color: #d27a74;
-    --fill-color-hover: #ebc4c1;
-}
-path[data-town="信義區"] {
-    --fill-color: #e0935e;
-    --fill-color-hover: #f1cfb7;
-}
-path[data-town="中正區"] {
-    --fill-color: #e0ca48;
-    --fill-color-hover: #f1e7ad;
-}
-path[data-town="中山區"] {
-    --fill-color: #83c262;
-    --fill-color-hover: #c8e4b9;
-}
-path[data-town="暖暖區"] {
-    --fill-color: #69bcce;
-    --fill-color-hover: #bce1e9;
-}
-path[data-town="七堵區"] {
-    --fill-color: #9a66be;
-    --fill-color-hover: #d2bbe2;
-}
-path[data-town="安樂區"] {
-    --fill-color: #667dbe;
-    --fill-color-hover: #bbc5e2;
-}
+/* Header */
 
-svg path {
-    fill: #ebebeb;
-    stroke: #c5c5c5;
-}
-
-svg text {
-    text-decoration: none;
-    font-size: 3rem;
-    font-weight: 600;
-    fill: gray;
-    stroke: none;
-    /* Unselectable */
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-}
-
-svg a {
-    text-decoration: none;
-    path {
-        fill: var(--fill-color);
-        stroke: black;
-    }
-    text {
-        fill: black;
-    }
-}
-
-svg a:hover path {
-    fill: var(--fill-color-hover);
-}
-
-#scale-bar text {
-    font-size: 1rem;
-    fill: black;
-    stroke: none;
-}
-
-#scale-bar rect {
-    stroke: black;
-
-    &:nth-child(4n + 1),
-    &:nth-child(4n + 4) {
-        fill: black;
-    }
-    &:nth-child(4n + 2),
-    &:nth-child(4n + 3) {
-        fill: white;
-    }
-}
-
-#indicator circle {
-    fill: none;
-    stroke: black;
-}
-
-#indicator path {
-    stroke: black;
-
-    &:first-child {
-        fill: black;
-    }
-    &:nth-child(2) {
-        fill: white;
-    }
-}
-
-#indicator text {
-    font-size: 1.5rem;
-    fill: black;
-    stroke: none;
+h2:hover::after,
+h3:hover::after,
+h4:hover::after,
+h5:hover::after {
+    content: "#";
+    margin-left: 0.25em;
+    color: gray;
 }
 
 /**
@@ -264,15 +285,10 @@ svg a:hover path {
     width: 100%;
     height: min(60vh, calc(37.5vw)); /* 24:9 */
     object-fit: cover;
+}
 
-    font-size: min(10vw, 30vh);
-    /* Unselectable */
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+#sight-carousel text {
+    font-size: min(10vw, 30vh) !important;
 }
 
 #sight-info div {

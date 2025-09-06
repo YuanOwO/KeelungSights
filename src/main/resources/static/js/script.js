@@ -1,5 +1,6 @@
 const API = axios.create({
-    baseURL: location.origin,
+    // baseURL: location.origin,
+    baseURL: "http://localhost:5050",
     timeout: 3000,
     raxConfig: {
         retry: 3,
@@ -7,7 +8,7 @@ const API = axios.create({
     },
 });
 
-const mdCvter = new showdown.Converter();
+const mdCvter = new showdown.Converter({ noHeaderId: true });
 
 const showLoading = () => {
     let elem = document.getElementById("loading");
