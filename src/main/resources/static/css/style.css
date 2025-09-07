@@ -83,6 +83,25 @@ a {
 
 /* Map */
 
+#background {
+    fill: lightblue;
+}
+
+text {
+    font-size: 3rem;
+    font-weight: 600;
+    text-anchor: middle;
+    alignment-baseline: middle;
+
+    /* Unselectable */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
 [data-town="仁愛區"] {
     --fill-color: #d27a74;
     --fill-color-hover: #ebc4c1;
@@ -118,26 +137,7 @@ a {
     --fill-color-hover: #bbc5e2;
 }
 
-text {
-    font-size: 3rem;
-    font-weight: 600;
-    text-anchor: middle;
-    dominant-baseline: middle;
-
-    /* Unselectable */
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-}
-
-#background {
-    fill: lightblue;
-}
-
-svg a {
+.main-city a {
     text-decoration: none;
 }
 
@@ -184,7 +184,7 @@ svg a {
 }
 
 #scale-bar text {
-    dominant-baseline: text-before-edge;
+    alignment-baseline: text-before-edge;
 }
 
 #scale-bar text#unit {
@@ -192,7 +192,7 @@ svg a {
 }
 
 #indicator text {
-    dominant-baseline: text-after-edge;
+    alignment-baseline: text-after-edge;
 }
 
 /* Links */
@@ -200,7 +200,8 @@ svg a {
 .districts a {
     color: var(--bs-link-color);
     text-decoration: none;
-    margin-right: 0.5em;
+    margin-right: 1em;
+    word-break: keep-all;
 
     &::before {
         content: "[";
