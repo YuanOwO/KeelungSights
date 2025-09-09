@@ -25,11 +25,9 @@ fun main() {
 
 val pool = ConnectionPool(10, 3, TimeUnit.MINUTES)
 
-val client = OkHttpClient.Builder()
-    .connectionPool(pool)
-    .connectTimeout(5, TimeUnit.SECONDS)
-    .readTimeout(10, TimeUnit.SECONDS)
-    .build()
+val client =
+    OkHttpClient.Builder().connectionPool(pool).connectTimeout(5, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS)
+        .build()
 
 @OptIn(ExperimentalCoroutinesApi::class)
 val limitedIO = Dispatchers.IO.limitedParallelism(10)
@@ -96,13 +94,18 @@ class SightsCrawler {
         val address = doc.selectFirst(".address a")
         val img = doc.selectFirst("#galleria .swiper-slide img")
 
-        Sight(id = CrawlerUtils.getIDFromURL(url), name = doc.selectFirst("h1 > span")?.text(),
-              city = doc.selectFirst(".breadcrumb .bc_li:nth-last-child(2) a")?.text(),
-              district = doc.selectFirst(".breadcrumb .bc_last a")?.text(),
-              category = doc.selectFirst(".point_type > span:nth-child(2)")?.text(),
-              description = CrawlerUtils.getTextFromElement(doc.selectFirst(".text")), address = address?.text(),
-              mapUrl = address?.attr("href"), photoUrl = img?.attr("data-src") ?: img?.attr("src"),
-              sourceUrl = BASE_URL + url)
+        Sight(
+            sightId = CrawlerUtils.getIDFromURL(url),
+            name = doc.selectFirst("h1 > span")?.text(),
+            city = doc.selectFirst(".breadcrumb .bc_li:nth-last-child(2) a")?.text(),
+            district = doc.selectFirst(".breadcrumb .bc_last a")?.text(),
+            category = doc.selectFirst(".point_type > span:nth-child(2)")?.text(),
+            description = CrawlerUtils.getTextFromElement(doc.selectFirst(".text")),
+            address = address?.text(),
+            mapUrl = address?.attr("href"),
+            photoUrl = img?.attr("data-src") ?: img?.attr("src"),
+            sourceUrl = BASE_URL + url
+        )
     }
 
 }

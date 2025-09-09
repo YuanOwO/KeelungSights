@@ -18,7 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         
         這讓我不禁思考，是否真正理解基隆旅遊景點的深層意義。基隆旅遊景點的發展究竟源於什麼原因？正如劉向所言：「少而好學，如日出之陽；壯而好學，\
         如日中之光；老而好學，如炳燭之明。」這句話給了我很大的啟發。解決基隆旅遊景點問題，對我們來說，意義非凡。這幾天，我一直在深思這個問題，並\
-        將帶著這些問題去探索基隆旅遊景點的發展。""", version = "1.0.0",
+        將帶著這些問題去探索基隆旅遊景點的發展。""", version = "1.1.1",
                                 contact = @Contact(name = "howard_kuo", url = "https://howard522.github.io/",
                                                    email = "8754howard@gmail.com"),
                                 license = @License(name = "The MIT License",

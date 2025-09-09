@@ -42,11 +42,11 @@ const parseList = (list) => {
             ["card-text", "description"],
             ["card-address", "address"],
         ]) {
-            card.getElementsByClassName(cls)[0].innerText = sight[attr];
+            card.getElementsByClassName(cls)[0].textContent = sight[attr];
         }
 
         for (let [cls, href] of [
-            ["card-title", `#/${sight.district.slice(0, -1)}/${sight.id}`],
+            ["card-title", `#/${sight.district.slice(0, -1)}/${sight.sightId}`],
             ["card-address", sight.mapUrl],
             ["card-source", sight.sourceUrl],
         ]) {
@@ -76,10 +76,10 @@ const parseSight = (sight) => {
     elem.appendChild(img);
     document.querySelector("#sight-carousel .carousel-indicators button:first-child").click();
 
-    document.getElementById("sight-category").innerText = sight.category;
-    document.getElementById("sight-address").innerText = sight.address;
+    document.getElementById("sight-category").textContent = sight.category;
+    document.getElementById("sight-address").textContent = sight.address;
     document.getElementById("sight-address").href = sight.mapUrl;
-    document.getElementById("sight-title").innerText = sight.name;
+    document.getElementById("sight-title").textContent = sight.name;
     document.getElementById("sight-description").innerHTML = mdCvter.makeHtml(sight.description);
     document.getElementById("sight-source").href = sight.sourceUrl;
 };
@@ -97,14 +97,14 @@ const displayPage = (page, ...args) => {
     // 設定頁面內容
     if (page === "list") {
         if (args[0].endsWith("區")) args[0] = args[0].slice(0, -1); // 移除「區」字
-        document.querySelector("#list h1").innerText = `${args[0]}區ㄉ觀光景點！`;
+        document.querySelector("#list h1").textContent = `${args[0]}區ㄉ觀光景點！`;
         url = "/sights?district=" + encodeURIComponent(args[0]);
         func = parseList;
     } else if (page === "sight") {
         url = "/sight/" + encodeURIComponent(args[0]);
         func = parseSight;
     } else if (page === "404" && args[0]) {
-        document.getElementById("error-detail").innerText = args[0];
+        document.getElementById("error-detail").textContent = args[0];
     }
 
     // 載入資料

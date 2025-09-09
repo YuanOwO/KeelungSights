@@ -24,7 +24,10 @@ public class SightsService {
         SightsCrawler crawler = new SightsCrawler();
         System.out.println("Start crawling sights...");
         List<Sight> sights = crawler.fetchSightsListSync(null);
+
+        // 更新資料庫
         System.out.printf("Crawled %d sights. Saving to database...\n", sights.size());
+        sightDao.deleteAll();
         sightDao.saveAll(sights);
         System.out.println("All sights saved to database.");
     }
@@ -35,7 +38,7 @@ public class SightsService {
     }
 
     public Sight getSightById(Long id) {
-        Sight sight = sightDao.findById(id);
+        Sight sight = sightDao.findBySightId(id);
         if (sight == null) throw new NotFoundException("未知的景點 ID: " + id);
         return sight;
     }

@@ -1,20 +1,26 @@
 spring:
   application:
     name: KeelungSightsViewer
-  datasource:
-    driver-class-name: org.h2.Driver
-    username: 'sa'
-    password:
-    url: 'jdbc:h2:mem:ksv'
-  h2:
-    console:
-      enabled: true
-      path: '/h2'
-  jpa:
-    generate-ddl: false
-    open-in-view: false
-    hibernate:
-      ddl-auto: update  # 當 spring boot entity 有修改時, 會自動修改 DB scheam
+  config:
+    import: optional:file:.env
+  data:
+    mongodb:
+      auto-index-creation: true
+      uri: mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}/${MONGO_DB}
+  #  datasource:
+  #    driver-class-name: org.h2.Driver
+  #    username: 'sa'
+  #    password:
+  #    url: 'jdbc:h2:mem:ksv'
+  #  h2:
+  #    console:
+  #      enabled: true
+  #      path: '/h2'
+  #  jpa:
+  #    generate-ddl: false
+  #    open-in-view: false
+  #    hibernate:
+  #      ddl-auto: update  # 當 spring boot entity 有修改時, 會自動修改 DB scheam
   mvc:
     throw-exception-if-no-handler-found: true
     static-path-pattern: /**
