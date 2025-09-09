@@ -27,9 +27,13 @@ public class SightsService {
 
         // 更新資料庫
         System.out.printf("Crawled %d sights. Saving to database...\n", sights.size());
-        sightDao.deleteAll();
-        sightDao.saveAll(sights);
-        System.out.println("All sights saved to database.");
+        if (sights.size() == 41) {
+            sightDao.deleteAll();
+            sightDao.saveAll(sights);
+            System.out.println("All sights saved to database.");
+        } else {
+            System.out.println("Crawling failed or incomplete. Database not updated.");
+        }
     }
 
     public List<Sight> getSightsByDistrict(String district) {
