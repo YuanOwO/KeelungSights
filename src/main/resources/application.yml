@@ -4,7 +4,8 @@ spring:
   data:
     mongodb:
       auto-index-creation: true
-      uri: mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}/${MONGO_DB}
+      database: ${MONGO_DB}
+      uri: mongodb+srv://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}/?retryWrites=true&w=majority&appName=KeelungSight
   #  datasource:
   #    driver-class-name: org.h2.Driver
   #    username: 'sa'
@@ -38,3 +39,7 @@ springdoc:
     disable-swagger-default-url: false
     tagsSorter: alpha
   default-produces-media-type: application/json
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: INFO

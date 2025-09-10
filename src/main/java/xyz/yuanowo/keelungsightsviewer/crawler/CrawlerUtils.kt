@@ -2,9 +2,12 @@ package xyz.yuanowo.keelungsightsviewer.crawler
 
 import org.jsoup.nodes.Element
 import org.jsoup.nodes.TextNode
+import org.slf4j.LoggerFactory
 
 
 class CrawlerUtils { companion object {
+
+    private val log = LoggerFactory.getLogger(CrawlerUtils::class.java)
 
     fun getIDFromURL(url: String): Long? {
         val matchResult = Regex("/tourguide/scenery(\\d+)\\.html").find(url)
@@ -49,13 +52,13 @@ class CrawlerUtils { companion object {
                                     appendLF(this)
                                 }
 
-                                else -> println("Unknown element: $e")
+                                else -> log.debug("Ignore unknown element: {}", e)
                             }
                         }
                     }
 
                     else -> {
-                        println("Unknown node: $e")
+                        log.debug("Ignore unknown node: {}", e)
                     }
                 }
             }

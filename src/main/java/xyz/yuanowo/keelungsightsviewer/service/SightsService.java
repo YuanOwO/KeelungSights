@@ -1,5 +1,7 @@
 package xyz.yuanowo.keelungsightsviewer.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -15,6 +17,8 @@ import java.util.List;
 @Service
 public class SightsService {
 
+    private static final Logger log = LoggerFactory.getLogger(SightsService.class);
+
     @Autowired
     SightDao sightDao;
 
@@ -22,18 +26,21 @@ public class SightsService {
     public void crawler() {
         // Server 啟動完畢再開始爬蟲
         SightsCrawler crawler = new SightsCrawler();
-        System.out.println("Start crawling sights...");
+        log.info("Start crawling sights...");
         List<Sight> sights = crawler.fetchSightsListSync(null);
 
         // 更新資料庫
-        System.out.printf("Crawled %d sights. Saving to database...\n", sights.size());
-        if (sights.size() == 41) {
-            sightDao.deleteAll();
-            sightDao.saveAll(sights);
-            System.out.println("All sights saved to database.");
-        } else {
-            System.out.println("Crawling failed or incomplete. Database not updated.");
+        log.info("Crawled {} sights. Saving to database...", sights.size());
+
+        if (sights.size() != 41) {
+            log.warn("Crawling failed or incomplete. Expected 41 sights, but got {}.", sights.size());
+            log.warn("Database not updated.");
+            return;
         }
+
+        sightDao.deleteAll();
+        sightDao.saveAll(sights);
+        log.info("Saved all sights to database.");
     }
 
     public List<Sight> getSightsByDistrict(String district) {
@@ -43,7 +50,10 @@ public class SightsService {
 
     public Sight getSightById(Long id) {
         Sight sight = sightDao.findBySightId(id);
-        if (sight == null) throw new NotFoundException("未知的景點 ID: " + id);
+        if (sight == null) {
+            log.warn("Sight ID {} not found.", id);
+            throw new NotFoundException("未知的景點 ID: " + id);
+        }
         return sight;
     }
 

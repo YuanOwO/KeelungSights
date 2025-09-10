@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.slf4j.LoggerFactory
 import xyz.yuanowo.keelungsightsviewer.model.Sight
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
@@ -25,9 +26,11 @@ fun main() {
 
 val pool = ConnectionPool(10, 3, TimeUnit.MINUTES)
 
-val client =
-    OkHttpClient.Builder().connectionPool(pool).connectTimeout(5, TimeUnit.SECONDS).readTimeout(10, TimeUnit.SECONDS)
-        .build()
+val client = OkHttpClient.Builder()
+    .connectionPool(pool)
+    .connectTimeout(5, TimeUnit.SECONDS)
+    .readTimeout(10, TimeUnit.SECONDS)
+    .build()
 
 @OptIn(ExperimentalCoroutinesApi::class)
 val limitedIO = Dispatchers.IO.limitedParallelism(10)
@@ -39,14 +42,15 @@ class SightsCrawler {
         private const val BASE_URL = "https://www.travelking.com.tw"
         private const val UA =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0"
+        private val log = LoggerFactory.getLogger(SightsCrawler::class.java)
 
     }
 
     private suspend fun fetchHtml(url: String): Document? = withContext(limitedIO) {
-        println("Fetching URL: $BASE_URL$url")
+        log.info("Fetching URL {}", url)
         val request = Request.Builder().url(BASE_URL + url).header("User-Agent", UA).build()
         client.newCall(request).execute().use { response ->
-            println("Fetched URL: $BASE_URL$url (Status: ${response.code})")
+            log.info("Fetched URL {} (Status: {})", url, response.code)
             if (response.isSuccessful) response.body?.let { Jsoup.parse(it.string()) }
             else null
         }
@@ -58,7 +62,11 @@ class SightsCrawler {
             try {
                 return fetchHtml(url)
             } catch (ex: SocketTimeoutException) {
-                println("Timeout when fetching $BASE_URL$url (attempt ${attempt + 1}/$retries)")
+                if (attempt == retries - 1) {
+                    log.error("Failed to fetch {} after {} attempts", url, retries, ex)
+                } else {
+                    log.warn("Timeout when fetching {} (attempt {}/{})", url, attempt + 1, retries)
+                }
                 delay(waitTime)
                 waitTime *= 2
             }
@@ -76,8 +84,8 @@ class SightsCrawler {
         val cssQuery = if (district == null) "#guide-point ul a" else "h4:contains(${district}) + ul a"
         val links = doc.select(cssQuery)
 
-        println("Found ${links.size} sight links")
-        for (link in links) println(" - [${link.text()}](${link?.attr("href")})")
+        log.debug("Found {} sight links", links.size)
+        for (link in links) log.debug(" - [{}]({})", link.text(), link?.attr("href"))
 
         links.map { li ->
             async {
