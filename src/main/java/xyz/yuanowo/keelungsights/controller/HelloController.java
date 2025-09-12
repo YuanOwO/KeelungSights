@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.controller;
+package xyz.yuanowo.keelungsights.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,8 +10,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import xyz.yuanowo.keelungsightsviewer.model.ResponseMessage;
-import xyz.yuanowo.keelungsightsviewer.service.HelloService;
+import xyz.yuanowo.keelungsights.model.ResponseMessage;
+import xyz.yuanowo.keelungsights.service.HelloService;
 
 
 @Tag(name = "Hello")

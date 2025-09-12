@@ -202,7 +202,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>xyz.yuanowo.keelungsightsviewer.Application</mainClass>
+                            <mainClass>xyz.yuanowo.keelungsights.Application</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

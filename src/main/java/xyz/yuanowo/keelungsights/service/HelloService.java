@@ -1,8 +1,8 @@
-package xyz.yuanowo.keelungsightsviewer.service;
+package xyz.yuanowo.keelungsights.service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import xyz.yuanowo.keelungsightsviewer.model.ResponseMessage;
+import xyz.yuanowo.keelungsights.model.ResponseMessage;
 
 
 @Service

@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer;
+package xyz.yuanowo.keelungsights;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

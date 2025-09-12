@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.service;
+package xyz.yuanowo.keelungsights.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import xyz.yuanowo.keelungsightsviewer.crawler.SightsCrawler;
-import xyz.yuanowo.keelungsightsviewer.exception.NotFoundException;
-import xyz.yuanowo.keelungsightsviewer.model.Sight;
-import xyz.yuanowo.keelungsightsviewer.repository.SightDao;
+import xyz.yuanowo.keelungsights.crawler.SightsCrawler;
+import xyz.yuanowo.keelungsights.exception.NotFoundException;
+import xyz.yuanowo.keelungsights.model.Sight;
+import xyz.yuanowo.keelungsights.repository.SightDao;
 
 import java.util.List;
 

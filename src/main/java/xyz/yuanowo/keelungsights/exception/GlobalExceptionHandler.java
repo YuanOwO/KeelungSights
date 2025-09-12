@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.exception;
+package xyz.yuanowo.keelungsights.exception;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
-import xyz.yuanowo.keelungsightsviewer.model.ResponseMessage;
+import xyz.yuanowo.keelungsights.model.ResponseMessage;
 
 
 @RestControllerAdvice

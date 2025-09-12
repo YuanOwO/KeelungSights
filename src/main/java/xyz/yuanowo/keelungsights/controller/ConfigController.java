@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.controller;
+package xyz.yuanowo.keelungsights.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,8 +7,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xyz.yuanowo.keelungsightsviewer.model.District;
-import xyz.yuanowo.keelungsightsviewer.model.ResponseList;
+import xyz.yuanowo.keelungsights.model.District;
+import xyz.yuanowo.keelungsights.model.ResponseList;
 
 import java.io.IOException;
 import java.util.List;

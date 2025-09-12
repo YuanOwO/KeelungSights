@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.controller;
+package xyz.yuanowo.keelungsights.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import xyz.yuanowo.keelungsightsviewer.model.ResponseList;
-import xyz.yuanowo.keelungsightsviewer.model.Sight;
-import xyz.yuanowo.keelungsightsviewer.service.SightsService;
+import xyz.yuanowo.keelungsights.model.ResponseList;
+import xyz.yuanowo.keelungsights.model.Sight;
+import xyz.yuanowo.keelungsights.service.SightsService;
 
 import java.util.List;
 

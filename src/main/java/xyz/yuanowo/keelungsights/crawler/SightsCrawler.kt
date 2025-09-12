@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.crawler
+package xyz.yuanowo.keelungsights.crawler
 
 import kotlinx.coroutines.*
 import okhttp3.ConnectionPool
@@ -7,7 +7,7 @@ import okhttp3.Request
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.slf4j.LoggerFactory
-import xyz.yuanowo.keelungsightsviewer.model.Sight
+import xyz.yuanowo.keelungsights.model.Sight
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
 

@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer;
+package xyz.yuanowo.keelungsights;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;

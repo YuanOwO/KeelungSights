@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.crawler
+package xyz.yuanowo.keelungsights.crawler
 
 import org.jsoup.nodes.Element
 import org.jsoup.nodes.TextNode

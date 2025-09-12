@@ -1,4 +1,4 @@
-# KeelungSightsViewer
+# KeelungSights
 
 一個基於 Spring Boot (Java + Kotlin 混合開發) 的全端專案，提供：
 

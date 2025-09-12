@@ -1,8 +1,8 @@
-package xyz.yuanowo.keelungsightsviewer.repository;
+package xyz.yuanowo.keelungsights.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import xyz.yuanowo.keelungsightsviewer.model.Sight;
+import xyz.yuanowo.keelungsights.model.Sight;
 
 import java.util.List;
 

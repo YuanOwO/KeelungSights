@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.configuration;
+package xyz.yuanowo.keelungsights.configuration;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package xyz.yuanowo.keelungsightsviewer.model
+package xyz.yuanowo.keelungsights.model
 
 import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.data.annotation.Id
