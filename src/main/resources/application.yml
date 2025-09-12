@@ -39,7 +39,3 @@ springdoc:
     disable-swagger-default-url: false
     tagsSorter: alpha
   default-produces-media-type: application/json
-
-logging:
-  level:
-    org.springframework.web.filter.CommonsRequestLoggingFilter: INFO
