@@ -1,6 +1,6 @@
 const API = axios.create({
     // baseURL: location.origin,
-    baseURL: "http://localhost:5050",
+    // baseURL: "http://localhost:5050",
     timeout: 3000,
     raxConfig: {
         retry: 3,
